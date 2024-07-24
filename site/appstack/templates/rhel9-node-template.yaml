@@ -1,0 +1,96 @@
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  name: ${cluster-name}-${host-name}
+  creationTimestamp: null
+spec:
+  runStrategy: Always
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        cluster: ${cluster-name}
+    spec:
+      domain:
+        cpu:
+          model: host-passthrough
+        resources:
+          limits:
+            cpu: 4
+            memory: 16Gi
+        devices:
+          disks:
+          - name: containerdisk
+            disk:
+              bus: virtio
+          - name: cloudinit
+            disk:
+              bus: virtio
+          interfaces:
+            - name: net-pod
+              bridge: {}
+            - name: net-sriov
+              sriov: {}
+      dnsPolicy: "None"
+      dnsConfig:
+        nameservers:
+          - 1.1.1.1
+          - 8.8.8.8
+      networks:
+      - name: net-pod
+        pod: {}
+      - name: net-sriov
+        multus:
+          networkName: ${network}
+      volumes:
+        - name: containerdisk
+          containerDisk:
+            image: ${f5xc_rhel9_container}
+            imagePullPolicy: Always
+        - name: cloudinit
+          cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              users:
+                - name: "vesop"
+                  passwd: ""
+                  groups:
+                    - "sudo"
+              coreos:
+                update:
+                  reboot-strategy: "off"
+              network:
+                version: 2
+              write_files:
+              - path: /etc/vpm/user_data
+                owner: root
+                content: |
+                  token: ${site-registration-token}
+              - path: /etc/vpm/config.yaml
+                owner: root
+                content: |
+                  Kubernetes:
+                    EtcdUseTLS: true
+                    Server: vip
+                  Vpm:
+                    ClusterName: ${cluster-name}
+                    ClusterType: ce
+                    Config: /etc/vpm/config.yaml
+                    Labels:
+                      testbed: make-me-a-var
+                    Hostname: ${cluster-name}-${host-name}
+                    Latitude: 0
+                    Longitude: 0
+                    EnableIpv6: true
+                    Token: 
+              - path: /etc/vpm/certified-hardware.yaml
+                permissions: 0644
+                owner: root
+                content: |
+                  active: site-v2-generic-chw
+                  certifiedHardware:
+                    site-v2-generic-chw: {}
+                  primaryOutsideNic: ${slo-nic}
+              runcmd:
+                - [ sh, -c, test -e /usr/bin/fsextend  && /usr/bin/fsextend || true ]
+              hostname: ${cluster-name}-${host-name}

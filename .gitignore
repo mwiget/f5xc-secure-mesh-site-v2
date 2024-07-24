@@ -1,0 +1,12 @@
+*tfstate*
+*tfvars
+*tfvars.json
+*.p12
+*.crt
+.terraform*
+*.kubeconfig
+id_rsa*
+*.qcow2
+*.log
+*.json
+debug

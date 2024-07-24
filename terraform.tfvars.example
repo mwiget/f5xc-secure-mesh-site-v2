@@ -1,0 +1,34 @@
+project_prefix     = "prefix"
+ssh_public_key     = "ssh-ed25519 AAAAC3......"
+#wait_for_online   = true
+
+# vmware vsphere 
+vsphere_server     = "vsphere.local"
+vsphere_user       = "administrator@vsphere.local"
+vsphere_password   = "password"
+vsphere_datacenter = "Datacenter"
+vsphere_cluster    = "Cluster"
+vsphere_datastore  = "datastore1"
+vsphere_host       = "<ip address>"
+f5xc_vm_template   = "rhel-9.2024.22-20240716042817-single-nic"
+
+# proxmox server
+pm_api_url          = "https://proxmox.local:8006/api2/json"
+pm_api_token_id     = "root@pam!name"
+pm_api_token_secret = "........-.........-....-.............
+# pm_user             = "root@pam"
+# pm_password         = "password"
+pm_target_nodes     = [ "node" ]
+iso_storage_pool    = "local"
+pm_storage_pool     = "local-lvm"
+pm_clone            = "f5xc-ce-9.2024.22-20240716144557"
+
+# appstack
+kubeconfig = "appstack.kubeconfig"
+f5xc_rhel9_container = "us-west1-docker.pkg.dev/solutions-team-280017/vesio-ver9-ce/securemeshv2:9.2024.19"
+
+# F5 XC 
+f5xc_api_url      = "https://tenant.console.ves.volterra.io/api"
+f5xc_api_token    = "<api_token>"
+f5xc_tenant       = "<tenant_id>"
+f5xc_api_p12_file = "/Users/user/certs/tenant.console.ves.volterra.io.api-creds.sb.p12"

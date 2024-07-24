@@ -1,0 +1,7 @@
+#cloud-config
+write_files:
+  - path: /etc/vpm/user_data
+    permissions: 0644
+    owner: root
+    content: |
+      token: ${node_registration_token}
