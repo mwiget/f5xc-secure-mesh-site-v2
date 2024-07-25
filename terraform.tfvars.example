@@ -10,7 +10,7 @@ vsphere_datacenter = "Datacenter"
 vsphere_cluster    = "Cluster"
 vsphere_datastore  = "datastore1"
 vsphere_host       = "<ip address>"
-f5xc_vm_template   = "rhel-9.2024.22-20240716042817-single-nic"
+f5xc_vm_template   = "f5xc-ce-9.2024.22-20240724192736"
 
 # proxmox server
 pm_api_url          = "https://proxmox.local:8006/api2/json"
@@ -21,7 +21,7 @@ pm_api_token_secret = "........-.........-....-.............
 pm_target_nodes     = [ "node" ]
 iso_storage_pool    = "local"
 pm_storage_pool     = "local-lvm"
-pm_clone            = "f5xc-ce-9.2024.22-20240716144557"
+pm_clone            = "f5xc-ce-9.2024.22-20240722122430"
 
 # appstack
 kubeconfig = "appstack.kubeconfig"
