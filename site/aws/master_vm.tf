@@ -22,6 +22,8 @@ resource "aws_instance" "master_vm" {
 
   tags = {
     Name = format("%s-m%d", var.f5xc_cluster_name, count.index)
+    ves-io-site-name = var.f5xc_cluster_name
+    "kubernetes.io/cluster/${var.f5xc_cluster_name}" = "owned"
     Creator = var.aws_owner_tag
   }
 }

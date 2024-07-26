@@ -11,7 +11,7 @@ resource "proxmox_vm_qemu" "master-vm" {
   memory            = var.master_memory
   os_type           = "cloud-init"
   scsihw            = "virtio-scsi-pci"
-  agent             = strcontains(var.pm_clone, "centos") ? 0 : 1
+  agent             = 1
   onboot            = true
   skip_ipv6         = true    # required until https://github.com/Telmate/terraform-provider-proxmox/issues/1015 is fixed
 

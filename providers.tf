@@ -43,6 +43,13 @@ provider "aws" {
   secret_key  = var.aws_secret_key
 }
 
+provider "aws" {
+  region      = "us-east-2"
+  alias       = "us-east-2"
+  access_key  = var.aws_access_key
+  secret_key  = var.aws_secret_key
+}
+
 provider "azurerm" {                                                                              
   subscription_id = var.azure_subscription_id != "" ? "" : var.azure_subscription_id
   client_id       = var.azure_client_id != "" ? "" : var.azure_client_id 
