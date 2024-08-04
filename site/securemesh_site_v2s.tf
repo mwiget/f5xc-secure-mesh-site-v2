@@ -56,6 +56,6 @@ resource "restapi_object" "site" {
 output "site" {
   value = { 
     raw = restapi_object.site
-    #    site_name = regex("site_name:(\\S+)", restapi_object.token-1.api_data.spec)[0]
+    token = terraform_data.token.input
   }
 }

@@ -31,5 +31,5 @@ module "aws-node" {
   #  inside_dhcp_pool_start    = var.inside_dhcp_pool_start
   #  inside_dhcp_pool_end      = var.inside_dhcp_pool_end
   
-  f5xc_registration_token   = regex("content:(\\S+)", restapi_object.token.api_data.spec)[0]
+  f5xc_registration_token   = terraform_data.token.input
 }

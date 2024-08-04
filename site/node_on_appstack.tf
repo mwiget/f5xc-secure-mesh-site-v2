@@ -19,5 +19,5 @@ module "node-on-appstack" {
   slo_interface           = var.slo_interface
   outside_macaddr         = var.outside_macaddr
 
-  f5xc_registration_token   = regex("content:(\\S+)", restapi_object.token.api_data.spec)[0]
+  f5xc_registration_token   = terraform_data.token.input
 }
