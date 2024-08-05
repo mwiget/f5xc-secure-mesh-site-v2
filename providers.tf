@@ -68,3 +68,12 @@ provider "google" {
   project     = var.gcp_project_id
   credentials = var.gcloud_credentials
 }
+
+provider "nutanix" {
+  username     = var.nutanix_username
+  password     = var.nutanix_password
+  endpoint     = var.nutanix_endpoint
+  port         = var.nutanix_port
+  insecure     = true
+  wait_timeout = 10
+}

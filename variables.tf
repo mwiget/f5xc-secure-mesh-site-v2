@@ -120,3 +120,23 @@ variable "aws_availability_zones" {
 variable "aws_ami_name" {
   type = string
 }
+variable "nutanix_username" {
+  type = string
+  default = "admin"
+}
+variable "nutanix_password" {
+  type = string
+  default = ""
+}
+variable "nutanix_endpoint" {
+  type = string
+  default = ""
+}
+variable "nutanix_port" {
+  type = string
+  default = "9440"
+}
+variable "nutanix_image_url" {
+  type = string
+  default = ""
+}

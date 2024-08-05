@@ -262,3 +262,7 @@ variable "aws_ami_name" {
   type = string
   default = ""
 }
+variable "nutanix_image_url" {
+  type = string
+  default = ""
+}
