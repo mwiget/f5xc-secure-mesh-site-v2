@@ -12,7 +12,7 @@ module "vmware" {
   vsphere_cluster           = var.vsphere_cluster
   vsphere_datastore         = var.vsphere_datastore
 
-  master_node_count         = 1
+  master_node_count         = 3
   worker_node_count         = 0
 
   master_cpus               = 4
