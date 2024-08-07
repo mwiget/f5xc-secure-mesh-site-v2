@@ -25,14 +25,6 @@ module "aws" {
   aws_slo_subnets           = [ "10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
   aws_sli_subnets           = [ "10.0.11.0/24", "10.0.12.0/24", "10.0.13.0/24"]
 
-  #sli_interface             = "ens18"
-  #inside_network            = "vmbr0"
-  #inside_network_vlan       = "100"
-  #inside_vip                = "192.168.100.5"
-  #inside_ipv4_prefix        = "192.168.100.0/24"
-  #inside_dhcp_pool_start    = "192.168.100.10"
-  #inside_dhcp_pool_end      = "192.168.100.200"
- 
   f5xc_tenant               = var.f5xc_tenant
   f5xc_api_url              = var.f5xc_api_url
   f5xc_api_token            = var.f5xc_api_token

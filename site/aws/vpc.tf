@@ -98,6 +98,13 @@ resource "aws_security_group" "allow_slo_traffic" {
   vpc_id      = aws_vpc.vpc.id
 
   ingress {
+    from_port   = "0"
+    to_port     = "0"
+    protocol    = "-1"
+    cidr_blocks = [ var.aws_vpc_cidr ]
+  }
+
+  ingress {
     from_port   = "22"
     to_port     = "22"
     protocol    = "tcp"

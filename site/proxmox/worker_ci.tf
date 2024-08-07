@@ -21,7 +21,5 @@ write_files:
   owner: root
   content: |
     token: ${var.f5xc_registration_token}
-runcmd:
-  - [ sh, -c, test -e /usr/bin/fsextend  && /usr/bin/fsextend || true ]
 EOT
 }
