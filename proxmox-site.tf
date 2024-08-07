@@ -19,7 +19,6 @@ module "proxmox" {
   ssh_public_key            = var.ssh_public_key
   pm_target_nodes           = var.pm_target_nodes
   outside_network           = "vmbr0"
-  # outside_macaddr       = "02:02:02:00:00:00"   # last octet replaced with node index
 
   inside_network            = "vmbr0"
   inside_network_vlan       = "100"
