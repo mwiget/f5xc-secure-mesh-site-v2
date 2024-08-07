@@ -140,3 +140,23 @@ variable "nutanix_image_url" {
   type = string
   default = ""
 }
+variable "nutanix_site_count" {
+  type = number
+  default = 0
+}
+variable "vmware_site_count" {
+  type = number
+  default = 0
+}
+variable "proxmox_site_count" {
+  type = number
+  default = 0
+}
+variable "aws_site_count" {
+  type = number
+  default = 0
+}
+variable "site_on_appstack_count" {
+  type = number
+  default = 0
+}

@@ -1,5 +1,5 @@
 module "aws" {
-  count                     = 1
+  count                     = var.aws_site_count
   source                    = "./site"
   f5xc_cluster_name         = format("%s-aws-%d", var.project_prefix, count.index)
   secure_mesh_site_provider = "aws"

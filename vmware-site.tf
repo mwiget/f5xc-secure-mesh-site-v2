@@ -1,5 +1,5 @@
 module "vmware" {
-  count                     = 1
+  count                     = var.vmware_site_count
   source                    = "./site"
   f5xc_cluster_name         = format("%s-vmware-%d", var.project_prefix, count.index)
   secure_mesh_site_provider = "vmware"

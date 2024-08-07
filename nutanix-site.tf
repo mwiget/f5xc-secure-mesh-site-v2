@@ -1,5 +1,5 @@
 module "nutanix" {
-  count                     = 1
+  count                     = var.nutanix_site_count
   source                    = "./site"
   f5xc_cluster_name         = format("%s-nutanix-%d", var.project_prefix, count.index)
   secure_mesh_site_provider = "kvm"
