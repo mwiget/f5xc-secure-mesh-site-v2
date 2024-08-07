@@ -10,3 +10,4 @@ id_rsa*
 *.log
 *.json
 debug
+.DS_Store
