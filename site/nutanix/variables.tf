@@ -32,11 +32,22 @@ variable "worker_memory" {
 }
 variable "outside_network" {
   type = string
-  default = "vmbr0"
+  default = ""
+}
+variable "outside_ip_address" {
+  type = list(string)
+  default = []
+}
+variable "outside_ip_gateway" {
+  type = string
+  default = ""
+}
+variable "outside_ip_dns" {
+  type = string
+  default = ""
 }
 variable "slo_interface" {
   type = string
-  default = "eth0"
 }
 variable "outside_network_vlan" {
   type = number

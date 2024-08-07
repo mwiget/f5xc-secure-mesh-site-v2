@@ -17,6 +17,9 @@ module "nutanix-node" {
   slo_interface             = var.slo_interface
   outside_network           = var.outside_network
   outside_macaddr           = var.outside_macaddr
+  outside_ip_address        = var.outside_ip_address
+  outside_ip_gateway        = var.outside_ip_gateway
+  outside_ip_dns            = var.outside_ip_dns
 
   inside_network            = var.inside_network
   inside_network_vlan       = var.inside_network_vlan

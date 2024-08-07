@@ -1,18 +1,18 @@
 module "aws" {
-  count                     = 0
+  count                     = 1
   source                    = "./site"
   f5xc_cluster_name         = format("%s-aws-%d", var.project_prefix, count.index)
   secure_mesh_site_provider = "aws"
   aws_instance_type         = "t3.xlarge"
-  aws_region                = "us-east-1"
+  aws_region                = "us-east-2"
   aws_availability_zones    = var.aws_availability_zones
   aws_ami_name              = var.aws_ami_name
 
   providers       = {
-    aws           = aws.us-east-1
+    aws           = aws.us-east-2
   }
 
-  master_node_count         = 1
+  master_node_count         = 3
   worker_node_count         = 0
 
   ssh_public_key            = var.ssh_public_key

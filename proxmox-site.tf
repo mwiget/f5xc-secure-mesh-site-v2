@@ -1,13 +1,13 @@
 module "proxmox" {
   count                     = 1
   source                    = "./site"
-  f5xc_cluster_name         = format("%s-proxmox%d", var.project_prefix, count.index)
+  f5xc_cluster_name         = format("%s-proxmox-%d", var.project_prefix, count.index)
   secure_mesh_site_provider = "kvm"
   pm_clone                  = var.pm_clone
   pm_storage_pool           = var.pm_storage_pool
   iso_storage_pool          = var.iso_storage_pool
 
-  master_node_count         = 1
+  master_node_count         = 3
   worker_node_count         = 0
 
   master_cpus               = 4
@@ -18,7 +18,6 @@ module "proxmox" {
 
   ssh_public_key            = var.ssh_public_key
   pm_target_nodes           = var.pm_target_nodes
-  slo_interface             = "ens18"
   outside_network           = "vmbr0"
   # outside_macaddr       = "02:02:02:00:00:00"   # last octet replaced with node index
 
@@ -34,4 +33,5 @@ module "proxmox" {
   f5xc_api_url              = var.f5xc_api_url
   f5xc_api_token            = var.f5xc_api_token
   wait_for_online           = var.wait_for_online
+
 }
