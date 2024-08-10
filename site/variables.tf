@@ -1,10 +1,6 @@
 variable "secure_mesh_site_provider" {}
 variable "ssh_public_key" {}
 variable "f5xc_cluster_name" {}
-variable "wait_for_online" {
-  type = bool
-  default = false
-}
 
 variable "master_node_count" {
   type = number
@@ -123,11 +119,6 @@ variable "f5xc_tunnel_type" {
 }
 
 variable "operating_system_version" {
-  type    = string
-  default = ""
-}
-
-variable "volterra_software_version" {
   type    = string
   default = ""
 }

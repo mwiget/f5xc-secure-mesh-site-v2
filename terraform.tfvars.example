@@ -1,6 +1,5 @@
 project_prefix     = "prefix"
 ssh_public_key     = "ssh-ed25519 AAAAC3......"
-#wait_for_online   = true
 
 # vmware vsphere 
 vsphere_server     = "vsphere.local"

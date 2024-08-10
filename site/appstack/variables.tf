@@ -88,11 +88,6 @@ variable "operating_system_version" {
   default = ""
 }
 
-variable "volterra_software_version" {
-  type    = string
-  default = ""
-}
-
 variable "outside_macaddr" {
   type    = string
   default = ""

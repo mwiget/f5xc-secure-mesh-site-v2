@@ -25,5 +25,4 @@ module "nutanix" {
   f5xc_tenant               = var.f5xc_tenant
   f5xc_api_url              = var.f5xc_api_url
   f5xc_api_token            = var.f5xc_api_token
-  wait_for_online           = var.wait_for_online
 }

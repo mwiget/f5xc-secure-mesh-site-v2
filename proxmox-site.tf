@@ -7,7 +7,7 @@ module "proxmox" {
   pm_storage_pool           = var.pm_storage_pool
   iso_storage_pool          = var.iso_storage_pool
 
-  master_node_count         = 3
+  master_node_count         = 1
   worker_node_count         = 0
 
   master_cpus               = 4
@@ -31,6 +31,5 @@ module "proxmox" {
   f5xc_tenant               = var.f5xc_tenant
   f5xc_api_url              = var.f5xc_api_url
   f5xc_api_token            = var.f5xc_api_token
-  wait_for_online           = var.wait_for_online
 
 }
