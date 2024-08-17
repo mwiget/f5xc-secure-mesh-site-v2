@@ -24,7 +24,7 @@ resource "vsphere_virtual_machine" "master-vm" {
 
   disk {
     label            = "disk0"
-    size             = 40
+    size             = 80
     eagerly_scrub    = false
     thin_provisioned = false
   }
@@ -58,9 +58,7 @@ resource "vsphere_virtual_machine" "master-vm" {
       "guestinfo.hostname"                        = format("%s-m%s", var.f5xc_cluster_name, count.index)
       "guestinfo.ves.token"                       = var.f5xc_registration_token,
       "guestinfo.ves.adminpassword"               = var.admin_password,
-      "guestinfo.interface.0.name"                = var.slo_interface,
       "guestinfo.interface.0.dhcp"                = "yes",
-      "guestinfo.interface.0.role"                = "public",
       #      "guestinfo.interface.0.ip.0.address"        = "",
       "guestinfo.interface.0.route.0.gateway"     = var.publicdefaultgateway,
       "guestinfo.interface.0.route.0.destination" = var.publicdefaultroute,

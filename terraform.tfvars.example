@@ -9,7 +9,7 @@ vsphere_datacenter = "Datacenter"
 vsphere_cluster    = "Cluster"
 vsphere_datastore  = "datastore1"
 vsphere_host       = "<ip address>"
-f5xc_vm_template   = "f5xc-ce-9.2024.22-20240724192736"
+f5xc_vm_template   = "f5xc-ce-9.2024.22-20240817055833"
 
 # proxmox server
 pm_api_url          = "https://proxmox.local:8006/api2/json"
