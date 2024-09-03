@@ -1,0 +1,74 @@
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  name: ${cluster-name}-${host-name}
+  creationTimestamp: null
+  annotations:
+    description: ${f5xc_rhel9_container}
+  labels:
+    app: ${cluster-name}-${host-name}
+    vm.kubevirt.io/template: f5xc
+    os.template.kubevirt.io/rhel9.2: 'true'
+    os.template.kubevirt.io/f5xc: 'true'
+spec:
+  runStrategy: Always
+  template:
+    metadata:
+      creationTimestamp: null
+      annotations:
+        vm.kubevirt.io/flavor: large
+        vm.kubevirt.io/os: rhel9
+        vm.kubevirt.io/workload: server
+      labels:
+        cluster: ${cluster-name}
+        kubevirt.io/domain: ${cluster-name}
+        kubevirt.io/size: large
+    spec:
+      domain:
+        cpu:
+          cores: ${cpus}
+          sockets: 1
+          threads: 1
+        devices:
+          disks:
+            - disk:
+                bus: virtio
+              name: rootdisk
+            - disk:
+                bus: virtio
+              name: cloudinitdisk
+          interfaces:
+            - masquerade: {}
+              model: virtio
+              name: default
+          networkInterfaceMultiqueue: true
+          rng: {}
+        features:
+          acpi: {}
+          smm:
+            enabled: true
+        machine:
+          type: q35
+        memory:
+          guest: ${memory}Mi
+      networks:
+      - name: default
+        pod: {}
+      volumes:
+        - name: rootdisk
+          containerDisk:
+            image: ${f5xc_rhel9_container}
+        - cloudInitNoCloud:
+            userData: |-
+              #cloud-config
+              users:
+                - default
+              ssh_authorized_keys:
+                - ${ssh_public_key}
+              write_files:
+              - path: /etc/vpm/user_data
+                permissions: 0644
+                owner: root
+                content: |
+                  token: ${site-registration-token}
+          name: cloudinitdisk

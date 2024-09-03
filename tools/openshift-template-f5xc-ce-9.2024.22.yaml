@@ -1,0 +1,89 @@
+﻿apiVersion: template.openshift.io/v1
+kind: Template
+metadata:
+  name: f5xc-ce-9.2024.22-20240806132626
+  labels:
+    template.kubevirt.io/type: vm
+    os.template.kubevirt.io/rhel9.2: 'true'
+    workload.template.kubevirt.io/server: 'true'
+  annotations:
+    name.os.template.kubevirt.io/f5xc: F5XC
+    description: VM template F5 XC Secure Mesh Site v2
+    openshift.io/display-name: f5xc-ce-9.2024
+    iconClass: icon-rhel
+  namespace: openshift
+objects:
+  - apiVersion: kubevirt.io/v1
+    kind: VirtualMachine
+    metadata:
+      name: '${NAME}'
+      annotations:
+        description: f5xc-ce-9.2024.22-20240806132626
+      labels:
+        app: '${NAME}'
+        vm.kubevirt.io/template: f5xc
+        os.template.kubevirt.io/rhel9.2: 'true'
+        os.template.kubevirt.io/f5xc: 'true'
+    spec:
+      running: false
+      template:
+        metadata:
+          annotations:
+            vm.kubevirt.io/flavor: large
+            vm.kubevirt.io/os: rhel9
+            vm.kubevirt.io/workload: server
+          labels:
+            kubevirt.io/domain: '${NAME}'
+            kubevirt.io/size: large
+        spec:
+          domain:
+            cpu:
+              cores: 4
+              sockets: 1
+              threads: 1
+            devices:
+              disks:
+                - disk:
+                    bus: virtio
+                  name: rootdisk
+                - disk:
+                    bus: virtio
+                  name: cloudinitdisk
+              interfaces:
+                - masquerade: {}
+                  model: virtio
+                  name: default
+              networkInterfaceMultiqueue: true
+              rng: {}
+            features:
+              acpi: {}
+              smm:
+                enabled: true
+            machine:
+              type: q35
+            memory:
+              guest: 16Gi
+          hostname: '${NAME}'
+          networks:
+            - name: default
+              pod: {}
+          terminationGracePeriodSeconds: 180
+          volumes:
+            - name: rootdisk
+              containerDisk:
+                image: us-west1-docker.pkg.dev/solutions-team-280017/vesio-ver9-ce/securemeshv2:9.2024.22-20240806132626
+            - cloudInitNoCloud:
+                userData: |-
+                  #cloud-config
+                  write_files:
+                  - path: /etc/vpm/user_data
+                    permissions: 0644
+                    owner: root
+                    content: |
+                      token: 
+              name: cloudinitdisk
+parameters:
+  - name: NAME
+    description: Name for the new VM
+    generate: expression
+    from: 'f5xc-ce-[a-z0-9]{16}'

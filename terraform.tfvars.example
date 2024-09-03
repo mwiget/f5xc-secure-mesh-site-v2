@@ -1,6 +1,14 @@
 project_prefix     = "prefix"
 ssh_public_key     = "ssh-ed25519 AAAAC3......"
 
+# number of sites per provider
+nutanix_site_count      = 0
+aws_site_count          = 0
+vmware_site_count       = 0
+proxmox_site_count      = 0
+site_on_appstack_count  = 0
+site_on_openshift_count = 0
+
 # vmware vsphere 
 vsphere_server     = "vsphere.local"
 vsphere_user       = "administrator@vsphere.local"
@@ -28,9 +36,9 @@ nutanix_password   = "password"
 nutanix_endpoint   = "<ip or hostname>"
 nutanix_image_url  = "https://vesio.blob.core.windows.net/releases/rhel/9/x86_64/images/securemeshV2/f5xc-ce-9.2024.22-20240729033629.qcow2"
 
-# appstack
+# appstack and openshift
 kubeconfig = "appstack.kubeconfig"
-f5xc_rhel9_container = "us-west1-docker.pkg.dev/solutions-team-280017/vesio-ver9-ce/securemeshv2:9.2024.19"
+f5xc_rhel9_container = "us-west1-docker.pkg.dev/solutions-team-280017/vesio-ver9-ce/securemeshv2:9.2024.22-20240806132626"
 
 # F5 XC 
 f5xc_api_url      = "https://tenant.console.ves.volterra.io/api"
