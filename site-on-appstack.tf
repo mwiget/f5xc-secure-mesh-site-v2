@@ -1,5 +1,6 @@
 module "site-on-appstack" {
   count                   = var.site_on_appstack_count
+  type                    = "appstack"
   source                  = "./site"
   f5xc_cluster_name       = format("%s-site-on-appstack-%d", var.project_prefix, count.index)
   secure_mesh_site_provider = "kvm"

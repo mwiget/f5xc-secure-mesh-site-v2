@@ -4,6 +4,7 @@ output "site" {
     proxmox           = module.proxmox
     vmware            = module.vmware
     site-on-appstack  = module.site-on-appstack
+    site-on-openshift = module.site-on-openshift
   }
   sensitive = true
 }

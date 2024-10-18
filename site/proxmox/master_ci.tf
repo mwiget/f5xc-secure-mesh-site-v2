@@ -21,5 +21,6 @@ write_files:
   owner: root
   content: |
     token: ${var.f5xc_registration_token}
+    proxy: ${var.http_proxy}
 EOT
 }

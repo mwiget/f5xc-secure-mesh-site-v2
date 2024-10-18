@@ -1,4 +1,8 @@
 #cloud-config
+users:
+  - default
+ssh_authorized_keys:
+  - ${ssh_public_key}
 write_files:
   - path: /etc/vpm/user_data
     permissions: 0644

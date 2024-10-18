@@ -5,6 +5,7 @@ module "proxmox-node" {
   pm_clone                  = var.pm_clone
   pm_storage_pool           = var.pm_storage_pool
   iso_storage_pool          = var.iso_storage_pool
+  http_proxy                = var.http_proxy
 
   master_node_count         = var.master_node_count
   worker_node_count         = var.worker_node_count

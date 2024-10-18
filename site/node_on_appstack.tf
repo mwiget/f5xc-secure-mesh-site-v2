@@ -1,5 +1,5 @@
 module "node-on-appstack" {
-  count                     = var.kubeconfig == "" ? 0 : 1
+  count                     = var.type == "appstack" ? 1 : 0
   source                  = "./appstack"
   f5xc_cluster_name       = var.f5xc_cluster_name
   kubeconfig              = var.kubeconfig

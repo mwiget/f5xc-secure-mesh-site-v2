@@ -12,7 +12,7 @@ module "vmware" {
   vsphere_cluster           = var.vsphere_cluster
   vsphere_datastore         = var.vsphere_datastore
 
-  master_node_count         = 3
+  master_node_count         = 1
   worker_node_count         = 0
 
   master_cpus               = 4
@@ -23,9 +23,10 @@ module "vmware" {
 
   ssh_public_key            = var.ssh_public_key
   slo_interface             = "ens192"
+  #  outside_network           = "vmbr1"
   outside_network           = "VM Network"
   # outside_macaddr       = "02:02:02:00:00:00"   # last octet replaced with node index
-  inside_network            = "VM Network 100"
+  #inside_network            = "VM Network 100"
 
   dnsservers             = {
     primary = "1.1.1.1"

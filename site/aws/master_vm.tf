@@ -17,6 +17,7 @@ resource "aws_instance" "master_vm" {
   }
 
   user_data = templatefile("${path.module}/templates/cloud-config-base.tmpl", {
+      ssh_public_key = var.ssh_public_key,
       node_registration_token = var.f5xc_registration_token
   })
 

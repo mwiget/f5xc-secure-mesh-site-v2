@@ -135,12 +135,12 @@ variable "inside_vip" {
 
 variable "master_vm_size" {
   type = string
-  default = "50G"
+  default = "80G"
 }
 
 variable "worker_vm_size" {
   type = string
-  default = "50G"
+  default = "80G"
 }
 
 variable "slo_global_vn" {
@@ -266,6 +266,10 @@ variable "aws_ami_name" {
   default = ""
 }
 variable "nutanix_image_url" {
+  type = string
+  default = ""
+}
+variable "type" {
   type = string
   default = ""
 }

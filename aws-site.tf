@@ -12,7 +12,7 @@ module "aws" {
     aws           = aws.us-east-2
   }
 
-  master_node_count         = 3
+  master_node_count         = 1
   worker_node_count         = 0
 
   ssh_public_key            = var.ssh_public_key

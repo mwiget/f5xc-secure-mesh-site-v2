@@ -72,11 +72,11 @@ variable "inside_vip" {
 }
 variable "master_vm_size" {
   type = string
-  default = "50G"
+  default = "80G"
 }
 variable "worker_vm_size" {
   type = string
-  default = "50G"
+  default = "80G"
 }
 variable "slo_global_vn" {
   type = string

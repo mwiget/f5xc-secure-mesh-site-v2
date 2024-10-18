@@ -7,6 +7,8 @@ module "proxmox" {
   pm_storage_pool           = var.pm_storage_pool
   iso_storage_pool          = var.iso_storage_pool
 
+  #  http_proxy                = "10.9.8.1:3128"
+
   master_node_count         = 1
   worker_node_count         = 0
 
@@ -20,8 +22,8 @@ module "proxmox" {
   pm_target_nodes           = var.pm_target_nodes
   outside_network           = "vmbr0"
 
-  inside_network            = "vmbr0"
-  inside_network_vlan       = "100"
+  #  inside_network            = "vmbr0"
+  #inside_network_vlan       = "100"
 
   #  inside_vip                = "192.168.100.5"
   #  inside_ipv4_prefix        = "192.168.100.0/24"

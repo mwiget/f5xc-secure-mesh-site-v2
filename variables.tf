@@ -2,10 +2,13 @@ variable "project_prefix" {
   type        = string
   default     = "f5xc"
 }
+variable "project_suffix" {
+  type        = string
+  default     = ""
+}
 
 # F5XC 
 
-variable "f5xc_api_p12_file"   {}
 variable "f5xc_api_url"        {}
 variable "f5xc_api_token"      {}
 variable "f5xc_tenant"         {}
@@ -153,6 +156,10 @@ variable "aws_site_count" {
   default = 0
 }
 variable "site_on_appstack_count" {
+  type = number
+  default = 0
+}
+variable "site_on_openshift_count" {
   type = number
   default = 0
 }
