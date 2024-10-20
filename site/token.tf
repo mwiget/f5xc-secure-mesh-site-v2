@@ -1,4 +1,5 @@
 resource "restapi_object" "token" {
+  depends_on = [ restapi_object.site ]
   id_attribute = "metadata/name"
   path         = "/register/namespaces/system/tokens"
   data         = jsonencode({
